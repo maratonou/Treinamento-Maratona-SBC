@@ -1,3 +1,17 @@
+/*Maratona de Programação da SBC – ACM ICPC – 2018
+3
+Problema C
+Cortador de Pizza
+Vô Giuseppe ganhou de presente um cortador profissional de pizza, daqueles do tipo carretilha e, para
+comemorar, assou uma pizza retangular gigante para seus netos! Ele sempre dividiu suas pizzas em
+pedaços fazendo cortes ao longo de linhas contı́nuas, não necessariamente retilı́neas, de dois tipos:
+algumas começam na borda esquerda da pizza, seguem monotonicamente para a direita e terminam
+na borda direita; outras começam na borda inferior, seguem monotonicamente para cima e terminam
+na borda superior. Mas Vô Giuseppe sempre seguia uma propriedade: dois cortes do mesmo tipo
+nunca podiam se interceptar. Veja um exemplo com 4 cortes, dois de cada tipo, na parte esquerda da
+figura, que dividem a pizza em 9 pedaços.*/
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>

@@ -1,3 +1,35 @@
+/* Maratona de Programação da SBC – ACM ICPC – 2018
+2
+Problema B
+Bolinhas de Gude
+Usar bolinhas de gude como moeda não deu muito certo em Cubicônia. Na tentativa de se redimir
+com seus amigos, depois de roubar suas bolinhas de gude, o imperador decidiu convidar todos para
+uma noite de jogos em seu palácio.
+Naturalmente, os jogos utilizam bolinhas de gude, afinal agora o imperador precisa encontrar
+alguma utilidade para tantas bolinhas. N bolinhas de gude são espalhadas em um grande tabuleiro
+cujas linhas são numeradas de 0 a L e as colunas numeradas de 0 a C. Os jogadores alternam turnos
+e em cada turno o jogador da vez deve escolher uma das bolinhas de gude e movê-la. O primeiro
+jogador que mover uma bolinha para a posição (0, 0) é o vencedor. Para que o jogo seja interessante,
+os movimentos são limitados; do contrário, o primeiro jogador sempre moveria a bolinha para a posição
+(0, 0) e venceria. Um movimento consiste em escolher um inteiro u maior que 0 e uma bolinha, cuja
+localização denotaremos por (l, c), e movê-la para uma das seguintes posições, desde que a mesma não
+saia do tabuleiro:
+• (l − u, c);
+• (l, c − u); ou
+• (l − u, c − u).
+Note que mais de uma bolinha de gude pode ocupar a mesma posição no tabuleiro.
+Como o imperador não gosta de perder você deve ajudá-lo a determinar em quais partidas ele deve
+participar. Como é de se esperar, sempre que joga o imperador fica com o primeiro turno. Assumindo
+que todos jogam de forma ótima, seu programa deve analisar a distribuição inicial das bolinhas de
+gude no tabuleiro e informar se é possı́vel ou não que o imperador vença caso ele jogue.
+Entrada
+A primeira linha contém um inteiro N (1 ≤ N ≤ 1000). Cada uma das N linhas seguintes contém
+dois inteiros l i e c i indicando em qual linha e coluna a i-ésima bolinha de gude se encontra no tabuleiro
+(1 ≤ l i , c i ≤ 100).
+Saı́da
+Seu programa deve produzir uma única linha contendo o caractere Y caso seja possı́vel para o
+imperador ganhar o jogo ou N caso contrário.*/
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
