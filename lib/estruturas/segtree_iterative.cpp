@@ -9,7 +9,7 @@ struct SegTree {
 		st.assign(2 * n + 1, 0);
 	}
 	
-	SegTree(vector<T> a) {
+	SegTree(vector<T>& a) {
 		n = a.size();
 		st.resize(2 * n + 1);
 		for(int k = n; k < 2 * n; ++k) st[k] = a[k - n];
