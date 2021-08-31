@@ -13,13 +13,14 @@ struct DSU {
 		return v == pai[v] ? v : findSet(pai[v]);
 	}
 	
-	void join(int a, int b) {
+	bool join(int a, int b) {
 		a = findSet(a);
 		b = findSet(b);
-		if(a == b) return;
+		if(a == b) return false;
 		else if(rank[a] > rank[b]) swap(a, b);
 		pai[a] = b;
 		rank[b] += rank[a] == rank[b];
+		return true;
 	}
 };
 
