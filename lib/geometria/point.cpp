@@ -71,7 +71,7 @@ struct point {
 		return hypot(x - p.x, y - p.y);
 	}
 	
-	point operator-(int) {
+	point operator-() {
 		return {-x, -y};
 	}
 };
