@@ -7,7 +7,7 @@ struct LazyPropagation {
 	void create(vector<T>& a, int lo, int hi, int no = 1) {
 		lazy[no] = 0;
 		marked[no] = false;
-		if(lo == hi) st[no] = {a[lo], -lo - 1};
+		if(lo == hi) st[no] = a[lo];
 		else {
 			int mid = (lo + hi) >> 1;
 			create(a, lo, mid, no << 1);
