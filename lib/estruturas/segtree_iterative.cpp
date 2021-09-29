@@ -24,8 +24,7 @@ struct SegTree {
 	
 	T query(int l, int r) {
 		T ans {};
-		l += n, r += n;
-		for(l /= 2, r /= 2; l <= r; l /= 2, r /= 2) {
+		for(l += n, r += n; l <= r; l /= 2, r /= 2) {
 			if(l & 1) ans += st[l++];
 			if(~r & 1) ans += st[r--];
 		}
