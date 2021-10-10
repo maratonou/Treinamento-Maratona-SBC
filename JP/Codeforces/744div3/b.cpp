@@ -72,12 +72,15 @@ void solve()
                 menor = vetor[j];
             }
         }
-        applyOffset(vetor, l, r);
-        vi move(3, 0);
-        move[0] = l+1;
-        move[1] = r+1;
-        move[2] = r-l;
-        moves.push_back(move);
+        if (l < r && l >= 0)
+        {
+            applyOffset(vetor, l, r);
+            vi move(3, 0);
+            move[0] = l+1;
+            move[1] = r+1;
+            move[2] = r-l;
+            moves.push_back(move);
+        }
     }
     
     printAns(moves);
