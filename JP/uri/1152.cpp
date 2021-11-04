@@ -23,29 +23,39 @@ public:
     UnionFind(int n) {
         this->rank.assign(n, 0);
         this->p.assign(n, 0);
+        for (int i = 0; i < n; i++)
+        {
+            p[i] = i;
+        }
     }
     int findSet(int i)
     {
-        return (p[i] != i ? findSet(p[i]) : i);
+        return (p[i] != i ? (p[i] = findSet(p[i])) : i);
     }
     void unionSet(int i, int j)
     {
-        if ( rank[findSet(i)] > rank[findSet(j)] )
+        int x = findSet(i), y = findSet(j);
+        if ( rank[x] > rank[y] )
         {
-
-        }
-        else if ( rank[findSet(j)] > rank[findSet(i)] )
-        {
-
+            p[y] = x;
         }
         else
         {
-
+            p[x] = y;
+            if (rank[x] == rank[y]) rank[y]++;
         }
     }
     int isSameSet(int i, int j)
     {
         return findSet(i) == findSet(j);
+    }
+    void printSet()
+    {
+        for (int i = 0; i < (int)p.size(); i++)
+        {
+            cout << p[i] << " ";
+        }
+        cout << "\n";
     }
 };
 
@@ -71,23 +81,19 @@ void solve()
             cin >> arestas[i][0] >> arestas[i][1] >> arestas[i][2];
             total_cost += arestas[i][2];
         }
-
+        UnionFind *sets = new UnionFind(n);
         priority_queue<vi, vector<vi>, comparator> ordered_edges(arestas.begin(), arestas.end());
         int cost = 0;
-        for (int k = 1; k < n; k++)
+        for (int k = 0; k < m; k++)
         {
             vi edge = ordered_edges.top();
             ordered_edges.pop();
-            if (bits[edge[0]] != bits[edge[1]])
+            if (!sets->isSameSet(edge[0], edge[1]))
             {
+                sets->unionSet(edge[0], edge[1]);
                 cost += edge[2];
-                bits[edge[1]] = edge[0];
-                for (int i = 0; i < n; i++)
-                {
-                    cout << bits[i] << " ";
-                }
-                cout << " || edge: " << edge[0] << " " << edge[1] << " " << edge[2];
-                cout << "\n";   
+                // printf(" edge %d %d %d\n", edge[0], edge[1], edge[2]);
+                // sets->printSet();
             }
         }
         cout << total_cost - cost << "\n";
