@@ -8,22 +8,36 @@ using ull = unsigned long long;
 using vi = vector<int>;
 
 
+int check_position(int m, vector<string> mapa, i, j)
+{
+	if (i < 0 || j < 0 || i == 2 || j == m)
+	{
+		return 0;
+	}
+	else if (mapa[i][j] == '1')
+	{
+		return 0;
+	}
+	return 1;
+}
+
 void solve()
 {
     int m;
     cin >> m;
-	vector<vi> level (2);
-	level[0].resize(m, 0);
-	level[1].resize(m, 0);
-	for (vi &lvl: level)
+	vector<string> level (2);
+	queue<ii> q;
+	q.emplace(0,0);
+
+	while(!q.empty)
 	{
-		for (int &x: lvl)
+		auto[x,y] = q.front();
+		q.pop();
+		for (int dx = -1; dx <= 1, dx++)
 		{
-			cin >> x;
-			cout << x << " ";
-		}
+			for (int dy = 0; dy <= 1;)
+		} 
 	}
-}
  
 int main() {
 	ios_base :: sync_with_stdio(false);
