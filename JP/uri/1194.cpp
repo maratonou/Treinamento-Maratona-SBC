@@ -7,80 +7,76 @@ using ii = pair<int, int>;
 using ull = unsigned long long;
 using vi = vector<int>;
 
-typedef struct bin_tree
+const char EMPTY = ('A'-1);
+
+vector<char> createTree(string prefix, string infix, int n)
 {
-    char node;
-    bin_tree *node_esq;
-    bin_tree *node_dir;
-}BinTree;
+    int size = (2*n) + 100;
+    // cout << "a1\n";
+    vector<char> bin_tree(size, EMPTY);
+    // cout << "a1\n";
 
-typedef struct root
-{
-    BinTree *tree;
-}Root;
-
-BinTree* createTree(string &prefix, string &infix, int n)
-{
-
-    BinTree *root = new BinTree;
-    root->node_dir = NULL;
-    root->node_esq = NULL;
-    root->node = prefix[0];
-
-    map<char, int> infix_pos;
+    // cout << "a1.1\n";
+    map<char, int> infix_map;
+    // cout << "a1.2\n";
 
     for (int i = 0; i < n; i++)
     {
-        infix_pos[infix[i]] = i;
+        // cout << "a1.3\n";
+        infix_map[infix[i]] = i+1;
     }
 
-    for (int i = 1; i <= n; i++)
+
+    // cout << "a2\n";
+    bin_tree[1] = prefix[0];
+    // cout << "a3\n";
+
+    for (int i = 1; i < n; i++)
     {
-        BinTree *it = root;
-        while (it != NULL)
+        int position = 1;
+        while (bin_tree[position] != EMPTY)
         {
-            cout << it->node << "\n";
-            if (infix_pos[prefix[i]] > infix_pos[prefix[i-1]] )
+            // cout << bin_tree[position] << " " << position << "\n";
+            if (infix_map[prefix[i]] > infix_map[bin_tree[position]])
             {
-                //dir
-                it = it->node_dir;
+                position *= 2;
+                position++;
             }
             else
             {
-                it = it->node_esq;
+                position *= 2;
             }
-            it = new BinTree;
-            it->node = prefix[i];
-            it->node_esq = NULL;
-            it->node_dir = NULL;
         }
+        bin_tree[position] = prefix[i];
+        // cout << bin_tree[position] << " " << position << "\n";
     }
-    return root;
+    return bin_tree;
 }
 
-void printPostfixTree(BinTree *tree)
+void printPostfixTree(vector<char> &bin_tree, int root)
 {
-    if (!tree->node_esq && !tree->node_dir)
+    if (bin_tree[root] == EMPTY)
     {
-        cout << tree->node;
         return;
     }
-    printPostfixTree(tree->node_esq);
-    printPostfixTree(tree->node_dir);
-    cout << tree->node;
-    return;
+    printPostfixTree(bin_tree, root*2);
+    printPostfixTree(bin_tree, (root*2)+1 );
+    cout << bin_tree[root];
 }
 
 void solve()
 {
     int n;
     cin >> n;
+    // cout << "a1.1\n";
     string prefixo;
     string infixo;
 
     cin >> prefixo >> infixo;
+    // cout << "a1.1\n";
 
-    printPostfixTree(createTree(prefixo, infixo, n));
+    vector<char> bin_tree = createTree(prefixo, infixo, n);
+    printPostfixTree(bin_tree, 1);
     cout << "\n";
 }
  
