@@ -1,5 +1,6 @@
 {
     "files.associations": {
+<<<<<<< HEAD
         "*.cpp": "cpp",
         "iostream": "cpp",
         "any": "cpp",
