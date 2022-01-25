@@ -7,50 +7,130 @@ using ii = pair<int, int>;
 using ull = unsigned long long;
 using vi = vector<int>;
 
+const string ENDL = "\n";
+
 void solve()
 {
     string s;
-    cin >> s;
-
-    string rest = "";
-    int index = 0;
-    for (int i = 0; i < (int) s.size(); i++)
+    ll integer;
+    cin >> integer;
+    s = to_string(integer);
+    if (integer % 25 == 0)
     {
-        index = i;
-        if (rest.empty())
+        cout << "0\n";
+        return;
+    }
+    int pos = 0;
+    int n = s.size();
+    int removed = 0;
+    int i;
+    int mode = 0;
+    for (i = 0; i < n; i++)
+    {
+        if (pos == 0)
         {
             if (s[i] == '5' || s[i] == '0')
             {
-                rest = s[i] + rest;
+                pos = 1;
+                mode = 1;
+                // cout << "found " << "s[i] = " << s[i] << ENDL << "----> mode = " << mode << ENDL;
+            }
+            else if (s[i] == '2' || s[i] == '7')
+            {
+                pos = 1;
+                mode = 0;
+                // cout << "found " << "s[i] = " << s[i] << ENDL << "----> mode = " << mode << ENDL;
             }
         }
-        else
+        else if (pos == 1)
         {
-            if (rest[0] == '5')
+            if (mode == 1)
             {
-                if (s[i] == 2 || s[i] == 7)
+                if (s[i] == '0')
                 {
-                    rest = s[i] + rest;
+                    // cout << "found " << "s[i] = " << s[i] << ENDL << "----> mode = " << mode << ENDL;
                     break;
+                }
+                else
+                {
+                    removed++;
+                    // cout << "not found, number is " << "s[i] = " << s[i] << ENDL << "----> mode = " << mode << ENDL;
+                    // cout << "---------> removed = " << removed << ENDL;
                 }
             }
             else
-            {
-                if (s[i] == 5)
+            {   
+                if (s[i] == '5')
                 {
-                    rest = s[i] + rest;
+                    // cout << "found " << "s[i] = " << s[i] << ENDL << "----> mode = " << mode << ENDL;
                     break;
+                }
+                else
+                {
+                    removed++;
+                    // cout << "not found, number is " << "s[i] = " << s[i] << ENDL << "----> mode = " << mode << ENDL;
+                    // cout << "---------> removed = " << removed << ENDL;
+                    
                 }
             }
         }
+        else
+            break;
     }
-    for (int i = 0; i <= index; i++)
+    pos = 0;
+    int removed1 = 0;
+    mode = 0;
+    int j;
+    for (j = n-1; j >= 0; j--)
     {
-        rest = s[i] + rest;
+        if (pos == 0)
+        {
+            if (s[j] == '5')
+            {
+                pos = 1;
+                mode = 0;
+            }
+            else if (s[j] == '0')
+            {
+                pos = 1;
+                mode = 1;
+            }
+            else
+            {
+                removed1++;
+            }
+        }
+        else if (pos == 1)
+        {
+            if (mode == 1)
+            {
+                if (s[j] == '5' || s[j] == '0')
+                {
+                    break;
+                }
+                else
+                {
+                    removed1++;
+                }
+            }
+            else
+            {   
+                if (s[j] == '2' || s[j] == '7')
+                {
+                    break;
+                }
+                else
+                {
+                    removed1++;
+                }
+            }
+        }
+        else
+            break;
     }
 
-    ll n;
-    n = stoi(rest);
+    cout << min((removed + n - i-1), removed1) << ENDL;
+    // cout << (removed + n-i-1) << " " << removed1 << ENDL;
 }
  
 int main() {

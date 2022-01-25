@@ -9,20 +9,24 @@ using vi = vector<int>;
 
 void solve()
 {
-    int x0, n;
-    cin >> x0, n;
+    ll x0, n;
+    cin >> x0 >> n;
 
-    vi side1;
-    vi side2;
+    int resto = n % 4;
+    ll base = 1LL*(n - resto);
 
-    if (n%2 == 0)
+    for (int i = 1; i <= resto; i++)
     {
-        int halfN = (n/2) -1;
+        if (x0 % 2)
+        {
+            x0 += base + i;
+        }
+        else
+        {
+            x0 -= base+i;
+        }
     }
-    else
-    {
-
-    }
+    cout << x0 << "\n";
 }
  
 int main() {
