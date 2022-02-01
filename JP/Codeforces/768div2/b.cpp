@@ -5,18 +5,35 @@ using namespace std;
 #define forn(i, n) for (int i = 0; i < n; i++)
  
 using ll = long long;
-using f64 = double;
 using ii = pair<int, int>;
 using ull = unsigned long long;
 using vi = vector<int>;
-using vii = vector<ii>;
-
 
 const string ENDL = "\n";
 
 void solve()
 {
-	
+	int n;
+    cin >> n;
+    vi a(n);
+    forn(i, n) cin >> a[i];
+    int ans = 0;
+    int commom = a[n-1];
+    for (int i = n-2; i >=0;)
+    {
+        if (i < 0)
+            break;
+        if (a[i] != commom)
+        {
+            ans++;
+            i -= n-1 - i;
+        }
+        else
+        {
+            i--;
+        }
+    }
+    cout << ans << ENDL;
 }
  
 int main() {

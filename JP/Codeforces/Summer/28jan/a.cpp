@@ -16,14 +16,26 @@ const string ENDL = "\n";
 
 void solve()
 {
-	
+	string s; cin >> s;
+    for (int i = 0; i <= (int)(s.size()/2); i++)
+    {
+        if (s[i] == '0')
+        {
+            s[i] = '1';
+        }
+        else
+        {
+            s[i] = '0';
+        }
+    }
+    cout << s << ENDL;
 }
  
 int main() {
 	ios_base :: sync_with_stdio(false);
 	cin.tie(0);
 	int t = 1;
-	cin >> t;
+	// cin >> t;
 	while(t--) solve();
  	return 0;
 }

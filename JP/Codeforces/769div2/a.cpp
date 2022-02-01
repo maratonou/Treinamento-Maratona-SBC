@@ -5,18 +5,35 @@ using namespace std;
 #define forn(i, n) for (int i = 0; i < n; i++)
  
 using ll = long long;
-using f64 = double;
 using ii = pair<int, int>;
 using ull = unsigned long long;
 using vi = vector<int>;
-using vii = vector<ii>;
-
 
 const string ENDL = "\n";
-
+int isOrganized(string &s, int len)
+{
+    for (int i = 0; i < len-1; i++)
+        if (s[i] == s[i+1])
+            return 1;
+    return 0;
+}
 void solve()
 {
-	
+	int n; cin >> n;
+    string s; cin >> s;
+	if (n>2)
+	{
+		cout << "NO\n";
+		return;
+	}
+    if (n > 1 && isOrganized(s, n))
+    {
+        cout << "NO\n";
+    }
+    else
+    {
+        cout << "YES\n";
+    }
 }
  
 int main() {

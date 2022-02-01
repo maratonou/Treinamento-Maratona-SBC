@@ -5,18 +5,22 @@ using namespace std;
 #define forn(i, n) for (int i = 0; i < n; i++)
  
 using ll = long long;
-using f64 = double;
 using ii = pair<int, int>;
 using ull = unsigned long long;
 using vi = vector<int>;
-using vii = vector<ii>;
-
 
 const string ENDL = "\n";
 
+int m[300000];
+
 void solve()
 {
-	
+	int n; cin >> n;
+    int k;
+    for (k = 1; n > 2*k; k*=2);
+    for (int i = n-1; i >= k; i--) cout << i << " ";
+    for (int i = 0; i < k; i++) cout << i << " ";
+    cout << ENDL;
 }
  
 int main() {

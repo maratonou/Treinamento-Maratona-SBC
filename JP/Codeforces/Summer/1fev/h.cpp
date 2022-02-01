@@ -10,13 +10,18 @@ using ii = pair<int, int>;
 using ull = unsigned long long;
 using vi = vector<int>;
 using vii = vector<ii>;
+using ugraph = vector<vi>;
+using dgraph = vector<vii>;
 
+#define size(x) x.size()
 
 const string ENDL = "\n";
 
 void solve()
 {
-	
+	int  e, v;
+    cin >> v >> e;
+    cout << (e-v+2) << ENDL;
 }
  
 int main() {

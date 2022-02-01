@@ -16,14 +16,20 @@ const string ENDL = "\n";
 
 void solve()
 {
-	
+	int n; cin >> n;
+    if (n%2)
+        cout << "0\n";
+    else
+    {
+        cout << (int)pow(2, (n/2)) << ENDL;
+    }
 }
  
 int main() {
 	ios_base :: sync_with_stdio(false);
 	cin.tie(0);
 	int t = 1;
-	cin >> t;
+	// cin >> t;
 	while(t--) solve();
  	return 0;
 }

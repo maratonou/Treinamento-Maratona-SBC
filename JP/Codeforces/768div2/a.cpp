@@ -5,18 +5,34 @@ using namespace std;
 #define forn(i, n) for (int i = 0; i < n; i++)
  
 using ll = long long;
-using f64 = double;
 using ii = pair<int, int>;
 using ull = unsigned long long;
 using vi = vector<int>;
-using vii = vector<ii>;
-
 
 const string ENDL = "\n";
 
 void solve()
 {
-	
+	int n;
+    cin >> n;
+    vi a(n);
+    vi b(n);
+    forn(i, n) cin >> a[i];
+    forn(i, n) cin >> b[i];
+
+    forn(i, n)
+    {
+        if (b[i] > a[i])
+        {
+            int tmp = b[i];
+            b[i] = a[i];
+            a[i] = tmp;
+        }
+    }
+    sort(a.begin(), a.end());
+    sort(b.begin(), b.end());
+
+    cout << (a[n-1]*b[n-1]) << ENDL;
 }
  
 int main() {

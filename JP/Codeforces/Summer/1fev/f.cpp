@@ -19,7 +19,25 @@ const string ENDL = "\n";
 
 void solve()
 {
-	
+    // cout << "a\n";
+    int freq[2000] = {0};
+	int v; cin >> v;
+    forn(i, v)
+    {
+        int n; cin >> n;
+        freq[n]++;
+    }
+    int maior = 0;
+    int maior_i = -1;
+    for (int i = 1; i <= 1000; i++)
+    {
+        if (maior < freq[i])
+        {
+            maior = freq[i];
+            maior_i = i;
+        }
+    }
+    cout << maior_i << ENDL;
 }
  
 int main() {

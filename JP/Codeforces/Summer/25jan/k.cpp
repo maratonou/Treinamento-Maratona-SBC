@@ -15,8 +15,7 @@ void solve()
 {
 	vector<ll> v(3, 0);
     cin >> v[0] >> v[1] >> v[2];
-    if (x <= 0) x = 1;
-    cout << x << ENDL;
+    cout << v[2]+v[1]+v[0] << ENDL;
 }
  
 int main() {
