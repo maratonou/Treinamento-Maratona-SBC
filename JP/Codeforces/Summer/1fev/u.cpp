@@ -27,53 +27,58 @@ void solve()
     for (int i = 0; i < n; i++) cin >> s[i];
     for (int i = 0; i < n; i++) cin >> q[i];
 
+    #ifdef DEBUG
     for (int i = 0; i < n; i++) cout << s[i] << " " << q[i] << ENDL;
     cout << ENDL;
-    // for (int i = 0; i < n; i++) cout << s1[i] << " " << s2[i] << ENDL; 
+    #endif
     set<string> t;
-    vi resp;
     int ans = 0;
+    vi resp;
     for(int i = 0; i < n; i++)
-    {
+    {   
+        ans++;
+        #ifdef DEBUG
         cout << s[i] << " " << q[i] << ENDL;
-        if (t.empty())
+        #endif
+        if (t.find(s[i]) != t.end())
         {
-            if (s[i] == q[i])
-                resp.push_back(1);
-            else
-            {
-                t.insert(s[i]);
-                cout << s[i] << " s[i] nao tem no set, adiciona\n";
-            }
+            set<string>::iterator its = t.find(s[i]);
+            t.erase(its);
+            #ifdef DEBUG 
+            cout << "s[i] tem no set, remove\n"; 
+            #endif
         }
         else
         {
-            ans++;
-            set<string>::iterator its = t.find(s[i]);
-            set<string>::iterator itq = t.find(q[i]);
-            if (itq == t.end())
-            {
-                t.insert(q[i]);
-            }
-            else
-            {
-                cout << q[i] << " q[i] tem no set, remove\n";
-                t.erase(its);
-            }
-            if (t.find(s[i]) == t.end())
-            {
-                cout << s[i] << " s[i] nao tem no set, adiciona\n";
-                t.insert(s[i]);
-            }
-            if(t.empty())
-            {
-                cout << "fechou esse set, vai pro proximo\n";
-                resp.push_back(ans);
-                ans = 0;
-            }
+            t.insert(s[i]);
+            #ifdef DEBUG
+            cout << "s[i] n tem no set, adiciona\n";
+            #endif
         }
+        if (t.find(q[i]) != t.end())
+        {
+            set<string>::iterator itq = t.find(q[i]);
+            t.erase(itq);
+            #ifdef DEBUG
+            cout << "q[i] tem no set, remove\n";
+            #endif
+        }
+        else
+        {
+            t.insert(q[i]);
+            #ifdef DEBUG
+            cout << "q[i] n tem no set, adiciona\n";
+            #endif
+        }
+        if (t.empty())
+        {
+            cout << ans << " ";
+            ans = 0;
+        }
+        #ifdef DEBUG
+        cout << ENDL;
+        #endif
     }
-
     cout << ENDL;
 }
  
