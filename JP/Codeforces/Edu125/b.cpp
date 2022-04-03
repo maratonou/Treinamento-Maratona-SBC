@@ -10,16 +10,30 @@ using ii = pair<int, int>;
 using ull = unsigned long long;
 using vi = vector<int>;
 using vii = vector<ii>;
-using ugraph = vector<vi>;
-using dgraph = vector<vii>;
 
-#define sz(x) x.size()
 
 const string ENDL = "\n";
 
 void solve()
 {
-	
+	ll n, b, x, y; cin >> n >> b >> x >> y;
+    vi a(n+1, 0);
+    ll sum = 0;
+    for(int i = 1; i <= n; i++)
+    {
+        if (a[i-1] + x > b)
+        {
+            a[i] = a[i-1]-y;
+        }
+        else
+        {
+            a[i] = a[i-1] + x;
+        }
+        sum += a[i];
+    }
+    // forn(i, n) cout << a[i] << " ";
+    // cout << ENDL;
+    cout << sum << ENDL;
 }
  
 int main() {

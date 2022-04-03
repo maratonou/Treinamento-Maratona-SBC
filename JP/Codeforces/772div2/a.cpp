@@ -10,16 +10,33 @@ using ii = pair<int, int>;
 using ull = unsigned long long;
 using vi = vector<int>;
 using vii = vector<ii>;
-using ugraph = vector<vi>;
-using dgraph = vector<vii>;
 
-#define sz(x) x.size()
 
 const string ENDL = "\n";
 
+
+
 void solve()
 {
-	
+	int n;
+    cin >> n;
+    vi v(n);
+    for(int i = 0; i < n; i++)
+        cin >> v[i];
+    
+    sort(v.begin(), v.end());
+
+    for(int i = 0; i < n-1; i++)
+    {
+        v[i+1] = v[i] | v[i+1];
+        v[i] = 0;
+    }
+    int sum = 0;
+    forn(i, n)
+    {
+        sum+=v[i];
+    }
+    cout << sum << ENDL;
 }
  
 int main() {

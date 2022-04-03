@@ -17,12 +17,23 @@ using dgraph = vector<vii>;
 
 const string ENDL = "\n";
 
+void setIO(string s) {
+    if (s.empty()) {
+        freopen("input.txt", "r", stdin);
+        // freopen("output.txt", "w", stdout);
+    } else {
+        freopen((s + ".in").c_str(), "r", stdin);
+        // freopen((s + ".out").c_str(), "w", stdout);
+    }
+}
+
 void solve()
 {
 	
 }
  
 int main() {
+	setIO("");
 	ios_base :: sync_with_stdio(false);
 	cin.tie(0);
 	int t = 1;

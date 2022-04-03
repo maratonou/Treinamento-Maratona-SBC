@@ -10,23 +10,32 @@ using ii = pair<int, int>;
 using ull = unsigned long long;
 using vi = vector<int>;
 using vii = vector<ii>;
-using ugraph = vector<vi>;
-using dgraph = vector<vii>;
 
-#define sz(x) x.size()
 
 const string ENDL = "\n";
 
 void solve()
 {
-	
+	int p, q; cin >> p >> q;
+    if (p <= 50 && q <= 10)
+    {
+        cout << "White\n";
+    }
+    else if (q > 30)
+    {
+        cout << "Red\n";
+    }
+    else
+    {
+        cout << "Yellow\n";
+    }
 }
  
 int main() {
 	ios_base :: sync_with_stdio(false);
 	cin.tie(0);
 	int t = 1;
-	cin >> t;
+	// cin >> t;
 	while(t--) solve();
  	return 0;
 }

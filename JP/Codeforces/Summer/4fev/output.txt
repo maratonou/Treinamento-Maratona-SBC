@@ -1,0 +1,4 @@
+
+portal_s = -1
+portal_e = -1
+2

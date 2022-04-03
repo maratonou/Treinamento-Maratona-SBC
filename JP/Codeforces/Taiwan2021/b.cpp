@@ -17,9 +17,24 @@ using dgraph = vector<vii>;
 
 const string ENDL = "\n";
 
+int sumdiv[1000000 + 10];
+
+void sieve()
+{
+    for (int i = 1; i <= 1000000; ++i)
+        for (int j = i; j <= 1000000; j += i)
+            sumdiv[j] += i;
+}
+
 void solve()
 {
-	
+	int n; cin >> n;
+    if (sumdiv[n]-n > n)
+        cout << "abundant\n";
+    else if (sumdiv[n]-n < n)
+        cout << "deficient\n";
+    else
+        cout << "perfect\n";
 }
  
 int main() {
@@ -27,6 +42,7 @@ int main() {
 	cin.tie(0);
 	int t = 1;
 	cin >> t;
+    sieve();
 	while(t--) solve();
  	return 0;
 }

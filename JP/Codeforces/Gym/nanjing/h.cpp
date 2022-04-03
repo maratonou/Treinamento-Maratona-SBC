@@ -10,16 +10,18 @@ using ii = pair<int, int>;
 using ull = unsigned long long;
 using vi = vector<int>;
 using vii = vector<ii>;
-using ugraph = vector<vi>;
-using dgraph = vector<vii>;
 
-#define sz(x) x.size()
 
 const string ENDL = "\n";
 
 void solve()
 {
-	
+	int n;
+    cin >> n;
+    vi v(n); forn(i, n) cin >> v[i];
+    vi t(n); forn(i, n) cin >> t[i];
+
+    vector<vi> graph;
 }
  
 int main() {

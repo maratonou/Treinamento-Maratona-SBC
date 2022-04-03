@@ -10,16 +10,25 @@ using ii = pair<int, int>;
 using ull = unsigned long long;
 using vi = vector<int>;
 using vii = vector<ii>;
-using ugraph = vector<vi>;
-using dgraph = vector<vii>;
 
-#define sz(x) x.size()
 
 const string ENDL = "\n";
 
 void solve()
 {
-	
+	int x, y; cin >> x >> y;
+
+    if(x == 0 && y == 0)
+        cout << "0\n";
+    else
+    {
+        int norma = (x*x) + (y*y);
+        int sqr = sqrt(norma);
+        if (norma == sqr*sqr)
+            cout << "1\n";
+        else
+            cout << "2\n";
+    }
 }
  
 int main() {

@@ -19,14 +19,37 @@ const string ENDL = "\n";
 
 void solve()
 {
-	
+	string a, b;
+    cin >> a >> b;
+    int ok = 1;
+    forn(i, (int)sz(a))
+    {
+        if(a[i] > '9' || a[i] < '0')
+        {
+            ok = 0;
+            break;
+        }
+    }
+    forn(i, (int)sz(b))
+    {
+        if(b[i] > '9' || b[i] < '0')
+        {
+            ok = 0;
+            break;
+        }
+    }
+    if (!ok)
+    {
+        cout << "NaN\n";
+        return;
+    }
+    cout << stoi(a)-stoi(b) << ENDL; 
 }
  
 int main() {
 	ios_base :: sync_with_stdio(false);
 	cin.tie(0);
 	int t = 1;
-	cin >> t;
 	while(t--) solve();
  	return 0;
 }

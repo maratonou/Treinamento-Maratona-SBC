@@ -10,16 +10,29 @@ using ii = pair<int, int>;
 using ull = unsigned long long;
 using vi = vector<int>;
 using vii = vector<ii>;
-using ugraph = vector<vi>;
-using dgraph = vector<vii>;
 
-#define sz(x) x.size()
+#define MAX 1000000007
 
 const string ENDL = "\n";
 
 void solve()
 {
-	
+	ll n, m, k; cin >> n >> m >> k;
+
+    ll ans = 0;
+    if (k <= n)
+    {
+        for (int i = 0; i < k; i++)
+        {
+            ans += m*(n-i);
+        }
+        int fat = 1;
+        for(int i = 2; i <=k; i++) fat*=i;
+        ans*= fat;
+
+    }
+    else cout << 0 << ENDL;
+    cout << ans << ENDL;
 }
  
 int main() {
