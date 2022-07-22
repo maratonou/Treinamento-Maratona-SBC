@@ -1,0 +1,6 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory '/home/jayp/Treinamento-Maratona-SBC/JP'
+make: Leaving directory '/home/jayp/Treinamento-Maratona-SBC/JP'
+ 
+make: *** No targets specified and no makefile found.  Stop.
+
